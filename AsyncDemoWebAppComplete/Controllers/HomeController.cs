@@ -13,7 +13,7 @@ namespace AsyncDemoWebAppComplete.Controllers
 {
     public class HomeController : Controller
     {
-        string[] sources =
+        private readonly string[] sources =
         {
             "https://matlusmovies.azurewebsites.net/api/movies/category/action",
             "https://matlusmovies.azurewebsites.net/api/movies/category/drama",
