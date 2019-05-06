@@ -17,8 +17,9 @@ namespace AsyncDemoWebAppComplete.Controllers
         {
             "https://matlusmovies.azurewebsites.net/api/movies/category/action",
             "https://matlusmovies.azurewebsites.net/api/movies/category/drama",
-            "https://matlusmovies.azurewebsites.net/api/movies/category/thriller",
             "https://matlusmovies.azurewebsites.net/api/movies/category/sci-fi",
+            "https://matlusmovies.azurewebsites.net/api/movies/category/thriller",
+            "https://matlusmovies.azurewebsites.net/api/movies/category/comedy",
         };
 
         public ActionResult Sync()
