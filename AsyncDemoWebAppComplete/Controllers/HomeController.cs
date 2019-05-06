@@ -128,7 +128,7 @@ namespace AsyncDemoWebAppComplete.Controllers
                 sqlCommand = sqlConnection.CreateCommand();
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.CommandText = "GetMoviesByGenre";
-                var sqlParameter = sqlCommand.Parameters.Add("@Genre", SqlDbType.VarChar)
+                var sqlParameter = sqlCommand.Parameters.Add("@Genre", SqlDbType.VarChar);
                 sqlParameter.Value = genreAsString;
                 sqlDataReader = await sqlCommand.ExecuteReaderAsync();
                 while (sqlDataReader.Read())
