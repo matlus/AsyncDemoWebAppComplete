@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<IEnumerable<AsyncDemoWebAppComplete.Models.Movie>>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>@ViewBag.ElapsedMilliseconds</h2>
+    <table>
+        @foreach (var movies in Model)
+        {
+            <tr>
+                @foreach (var movie in movies)
+                {
+                    <td>
+                        <div>@movie.Title</div>
+                        <div><img src="https://matlusstorage.blob.core.windows.net/membervideos/@movie.ImageUrl" style="width: 185px;" /></div>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</body>
+</html>
