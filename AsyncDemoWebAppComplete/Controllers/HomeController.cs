@@ -13,13 +13,23 @@ namespace AsyncDemoWebAppComplete.Controllers
 {
     public class HomeController : Controller
     {
+        ////private readonly string[] sources =
+        ////{
+        ////    "https://matlusmovies.azurewebsites.net/api/movies/category/action",
+        ////    "https://matlusmovies.azurewebsites.net/api/movies/category/drama",
+        ////    "https://matlusmovies.azurewebsites.net/api/movies/category/thriller",
+        ////    "https://matlusmovies.azurewebsites.net/api/movies/category/sci-fi",
+        ////};
+
+
         private readonly string[] sources =
-        {
-            "https://matlusmovies.azurewebsites.net/api/movies/category/action",
-            "https://matlusmovies.azurewebsites.net/api/movies/category/drama",
-            "https://matlusmovies.azurewebsites.net/api/movies/category/thriller",
-            "https://matlusmovies.azurewebsites.net/api/movies/category/sci-fi",
+       {
+            "https://matlusstorage.blob.core.windows.net/membervideos/action.json",
+            "https://matlusstorage.blob.core.windows.net/membervideos/drama.json",
+            "https://matlusstorage.blob.core.windows.net/membervideos/thriller.json",
+            "https://matlusstorage.blob.core.windows.net/membervideos/scifi.json",
         };
+        
 
         public ActionResult Sync()
         {
@@ -97,9 +107,9 @@ namespace AsyncDemoWebAppComplete.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-                var httpResponseMessage = httpClient.GetAsync(url).Result;
+                var httpResponseMessage = httpClient.GetAsync(url).GetAwaiter().GetResult();
                 httpResponseMessage.EnsureSuccessStatusCode();
-                return httpResponseMessage.Content.ReadAsAsync<IEnumerable<Movie>>().Result;
+                return httpResponseMessage.Content.ReadAsAsync<IEnumerable<Movie>>().GetAwaiter().GetResult();
             }
         }
 
