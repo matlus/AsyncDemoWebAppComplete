@@ -1,16 +1,17 @@
 ﻿using AsyncDemoWebAppComplete.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AsyncDemoWebAppComplete.Controllers
 {
+    ////C:\Users\c102116\Downloads\sb --dontBrowseToReports -u http://localhost:55318/Home/Async -c 20 -n 200
+
     public class HomeController : Controller
     {
         ////private readonly string[] sources =
@@ -47,7 +48,7 @@ namespace AsyncDemoWebAppComplete.Controllers
         {
             var sw = Stopwatch.StartNew();
 
-            var data = await DownloadDataAsync();
+            var data = await DownloadDataAsync().ConfigureAwait(false);
 
             sw.Stop();
             ViewBag.ElapsedMilliseconds = sw.ElapsedMilliseconds;
@@ -88,7 +89,7 @@ namespace AsyncDemoWebAppComplete.Controllers
                 allMoviesTasks.Add(DownloadMoviesAsync(url));
             }
 
-            return await Task.WhenAll(allMoviesTasks);
+            return await Task.WhenAll(allMoviesTasks).ConfigureAwait(false);
         }
 
         private object DownloadDataParallel()
@@ -117,7 +118,7 @@ namespace AsyncDemoWebAppComplete.Controllers
         {
             using (var httpClient = new HttpClient())
             {
-                var httpResponseMessage = await httpClient.GetAsync(url);
+                var httpResponseMessage = await httpClient.GetAsync(url).ConfigureAwait(false);
                 httpResponseMessage.EnsureSuccessStatusCode();
                 return await httpResponseMessage.Content.ReadAsAsync<IEnumerable<Movie>>();
             }

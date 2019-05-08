@@ -143,7 +143,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Web.config" />
+    <None Include="Views\Web.xxxconfig" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
