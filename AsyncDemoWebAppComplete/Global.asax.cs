@@ -15,7 +15,6 @@ namespace AsyncDemoWebAppComplete
             ServicePointManager.Expect100Continue = false;
             ServicePointManager.DefaultConnectionLimit = 200;
 
-            AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
